@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -38,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'taggit',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.postgres'
 ]
 
 MIDDLEWARE = [
@@ -76,8 +81,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'PASSWORD': '1234',
     }
 }
 
@@ -116,7 +122,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -126,7 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import certifi
 # Email server configuration
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'mohdarslan626@gmail.com'
-EMAIL_HOST_PASSWORD = 'yfno sfac tjse fsws'
+EMAIL_HOST_USER = 'example626@gmail.com'
+EMAIL_HOST_PASSWORD = 'xxxx xxxx xxxx xxxx'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
